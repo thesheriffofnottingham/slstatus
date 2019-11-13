@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* interval between updates (in ms) */
-const unsigned int interval = 1000;
+const unsigned int interval = 30000;
 
 /* text to show if no value can be retrieved */
 static const char unknown_str[] = "n/a";
@@ -63,12 +63,12 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-	{ datetime, "[%s]",           "%F %T" },
-	{ run_command, "[VOL %s%%]", "/bin/sh -c \"amixer get Master | tail -n1 | grep -Po '\\[\\K[^%]*' | head -n1\"" }, 
 	/*{ vol_perc, "[VOL %s%%]",  "/dev/mixer1" },*/ 
-	{ battery_state, "[CHR %s]",   "BAT0" },
 	{ battery_perc, "[BAT %2s%% | ", "BAT0" },
 	{ battery_remaining, "%2s]",  "BAT0" },
+	{ battery_state, "[CHR %s]",   "BAT0" },
 	{ wifi_perc, "[%3s%% on ",    "wlan0" },
 	{ wifi_essid, "%s]",          "wlan0" },
+	{ run_command, "[VOL %s%%]", "/bin/sh -c \"amixer get Master | tail -n1 | grep -Po '\\[\\K[^%]*' | head -n1\"" }, 
+	{ datetime, "[%s]",	      "%a %m-%d-%Y %H:%M" },
 };
